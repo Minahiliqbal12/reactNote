@@ -12,6 +12,11 @@ const App = () => {
     setTitle("");
     setDetailed("");
   };
+  const deleteNote = (idx) => {
+    const copyTask = [...task];
+    copyTask.splice(idx, 1);
+    setTask(copyTask);
+  };
 
   return (
     <div className="h-screen lg:flex bg-black text-white">
@@ -61,6 +66,14 @@ const App = () => {
                     {elem.detailed}
                   </p>
                 </div>
+                <button
+                  onClick={() => {
+                    deleteNote(idx);
+                  }}
+                  className="w-full cursor-pointer active:scale-95 bg-red-500 py-1 text-xs rounded font-bold text-white"
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
